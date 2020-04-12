@@ -1,9 +1,8 @@
 const React = {
   createElement(type, props, ...children) {
     return {
-      type: type,
-      className: props.className,
-      children: [props.children, ...children],
+      type,
+      props: { ...props, children },
     };
   },
 };
