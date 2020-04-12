@@ -29,4 +29,4 @@ const ReactDOM = {
   },
 };
 
-// export default ReactDOM;
+export default ReactDOM;
