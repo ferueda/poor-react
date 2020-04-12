@@ -5,6 +5,14 @@ const React = {
       props: { ...props, children },
     };
   },
+  useState(initialState) {
+    let state = initialState;
+    const setState = (newState) => {
+      state = newState;
+    };
+
+    return [state, newState];
+  },
 };
 
-// export default React;
+export default React;
