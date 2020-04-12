@@ -1,5 +1,7 @@
 const ReactDOM = {
   render(elementObject, container) {
+    container.innerHTML = '';
+
     if (
       typeof elementObject === 'string' ||
       typeof elementObject === 'number'

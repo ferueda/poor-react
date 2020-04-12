@@ -1,6 +1,6 @@
 const React = {
-  states: [],
-  stateIndex: 0,
+  hooks: [],
+  hookCursor: 0,
   createElement(tag, props, ...children) {
     return {
       tag,
@@ -8,23 +8,23 @@ const React = {
     };
   },
   render() {
-    this.stateIndex = 0;
+    this.hookCursor = 0;
 
-    // build the render function
+    // TODO
   },
   useState(initialState) {
-    const currentIndex = this.stateIndex;
+    const currentIndex = this.hookCursor;
 
-    states[currentIndex] = states[currentIndex] || initialState;
+    this.hooks[currentIndex] = this.hooks[currentIndex] || initialState;
 
     const setState = (newState) => {
-      this.states[currentIndex] = newState;
+      this.hooks[currentIndex] = newState;
       render();
     };
 
-    this.stateIndex++;
+    this.hookCursor++;
 
-    return [this.states[currentIndex], setState];
+    return [this.hooks[currentIndex], setState];
   },
 };
 
