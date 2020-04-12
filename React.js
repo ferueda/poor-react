@@ -15,7 +15,7 @@ const React = {
   useState(initialState) {
     const currentIndex = this.stateIndex;
 
-    states[currentIndex] = initialState;
+    states[currentIndex] = states[currentIndex] || initialState;
 
     const setState = (newState) => {
       this.states[currentIndex] = newState;
