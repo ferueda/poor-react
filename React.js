@@ -1,10 +1,10 @@
 const React = {
-  createElement(type, props, ...children) {
+  createElement(tag, props, ...children) {
     return {
-      type,
+      tag,
       props: { ...props, children },
     };
   },
 };
 
-export default React;
+// export default React;

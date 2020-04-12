@@ -1,11 +1,32 @@
 const ReactDOM = {
   render(elementObject, container) {
-    const element = document.createElement(elementObject.type);
-    element.classList.add(elementObject.className);
-    element.innerHTML = elementObject.children;
+    if (
+      typeof elementObject === 'string' ||
+      typeof elementObject === 'number'
+    ) {
+      const domElement = document.createTextNode(String(elementObject));
 
-    container.appendChild(element);
+      container.appendChild(domElement);
+
+      return;
+    }
+
+    const domElement = document.createElement(elementObject.tag);
+
+    if (elementObject.props) {
+      Object.keys(elementObject.props)
+        .filter((prop) => prop !== 'children')
+        .forEach((prop) => (domElement[prop] = elementObject.props[prop]));
+    }
+
+    if (elementObject.props.children) {
+      elementObject.props.children.forEach((child) =>
+        ReactDOM.render(child, domElement)
+      );
+    }
+
+    container.appendChild(domElement);
   },
 };
 
-export default ReactDOM;
+// export default ReactDOM;
